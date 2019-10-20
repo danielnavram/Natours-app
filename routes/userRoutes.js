@@ -1,8 +1,12 @@
 const express = require('express');
 const userController = require('./../controllers/userController');
 const authController = require('./../controllers/authController');
+const bookingRouter = require('./bookingRoutes');
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
+
+//GET /users/8731837129asd/bookings
+router.use('/:userId/bookings', bookingRouter);
 
 router.post('/singup', authController.singup);
 router.post('/login', authController.login);

@@ -3,6 +3,7 @@ const Tour = require('./../models/tourModel');
 const Booking = require('./../models/bookingModel');
 const catchAsync = require('./../utils/catchAsync');
 const factory = require('./handlerFactory');
+const AppError = require('./../utils/appErrors');
 
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   const tour = await Tour.findById(req.params.tourId);
@@ -49,3 +50,19 @@ exports.getBooking = factory.getOne(Booking);
 exports.createBooking = factory.createOne(Booking);
 exports.updateBooking = factory.updateOne(Booking);
 exports.deleteBooking = factory.deleteOne(Booking);
+
+exports.getUserBooking = catchAsync(async (req, res, next) => {
+  const bookings = await Booking.find({ user: req.params.userId });
+  console.log(req.params.userId);
+  if (!bookings) {
+    return next(new AppError('No documents found for the user', 404));
+  }
+
+  res.status(200).json({
+    status: 'success',
+    results: bookings.length,
+    data: {
+      data: bookings
+    }
+  });
+});
