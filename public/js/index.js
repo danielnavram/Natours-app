@@ -3,7 +3,7 @@ import '@babel/polyfill';
 import { login, logout } from './login';
 import { displayMap } from './mapbox';
 import { updateSettings } from './updateUserData';
-import { booktour } from './stripe';
+import { bookTour } from './stripe';
 
 // DOM Elements
 const mapBox = document.getElementById('map');

@@ -13,6 +13,7 @@ router
     authController.protect,
     authController.restrictTo('user'),
     reviewController.setTourUserIds,
+    reviewController.reviewBookTour,
     reviewController.createReview
   )
   .get(authController.protect, reviewController.getAllReviews);
