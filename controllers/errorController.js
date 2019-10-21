@@ -53,7 +53,7 @@ const sendErrorProd = (err, req, res) => {
     }
 
     // Programming or urnknown errors: dont show it to client
-    console.error('ERROR !!!!', err);
+    console.error('ERROR 💥!', err);
 
     // Send generic message
     return res.status(500).json({
@@ -70,7 +70,7 @@ const sendErrorProd = (err, req, res) => {
   }
 
   // Programming or urnknown errors: dont show it to client
-  console.error('ERROR !!!!', err);
+  console.error('ERROR 💥!', err);
 
   // B) RENDERED WEBSITE
   return res.status(err.statusCode).render('error', {
